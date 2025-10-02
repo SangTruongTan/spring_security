@@ -1,8 +1,8 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/postgres
-        username: postgres
-        password: example
+        url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+        username: ${DATABASE_USERNAME:postgres}
+        password: ${DATABASE_PASSWORD:example}
         driver-class-name: org.postgresql.Driver
     jpa:
         hibernate:
@@ -13,5 +13,9 @@ spring:
                 format_sql: true
         database: postgresql
         database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY:a68bfc7195c4e0d8b54f482875799a81417b553413685f01f7689dc73945d6bb}
+
 server:
-  port: 8082
+  port: ${SERVER_PORT:8082}
